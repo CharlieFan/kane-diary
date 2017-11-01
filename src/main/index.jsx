@@ -1,11 +1,9 @@
-import React from 'react'
+import routes from 'router/Router'
 import ReactDOM from 'react-dom'
 import 'normalize.css'
 import 'style/base.scss'
 
-import App from 'components/App'
-
 ReactDOM.render(
-    <App/>,
+    routes,
     document.getElementById('app')
 )

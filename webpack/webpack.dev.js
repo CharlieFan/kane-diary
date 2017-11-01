@@ -7,6 +7,7 @@ module.exports = merge(common, {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
+        historyApiFallback: true,
         port: 3000,
         hot: true
     },
