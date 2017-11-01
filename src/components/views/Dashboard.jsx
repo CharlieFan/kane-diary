@@ -8,4 +8,8 @@ export default class Dashboard extends React.Component {
             </div>
         )
     }
+    
+    componentDidMount() {
+        console.log(this.props)
+    }
 }

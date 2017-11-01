@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // function wait() {
 //     return new Promise((resolve) => {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <h1>Hello World</h1>
+                <Link to="/main/dashboard">To Dashboard</Link>
             </div>
         )
     }
