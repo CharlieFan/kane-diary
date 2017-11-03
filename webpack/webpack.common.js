@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 const VENDOR_LIBS = [
-    'babel-polyfill', 'react', 'react-dom'
+    'babel-polyfill', 'react', 'react-dom', 'react-router-dom', 'redux'
 ]
 
 const config = {
