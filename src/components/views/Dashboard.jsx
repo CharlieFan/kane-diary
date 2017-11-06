@@ -1,5 +1,5 @@
 import React from 'react'
-import { store, expenseActions } from 'store/modules/expense'
+import { store, expenseActions } from 'state/stores/expense'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
