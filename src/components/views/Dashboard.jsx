@@ -32,12 +32,6 @@ export default class Dashboard extends React.Component {
 
     render() {
         // store.dispatch(expenseActions.initExpense())
-        let user = {
-            name: 'Charlie',
-            age: 26
-        }
-        console.log({...user})
-
         return (
             <div>
                 <h1>Dashboard</h1>
