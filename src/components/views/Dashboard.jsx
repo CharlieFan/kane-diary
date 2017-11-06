@@ -1,13 +1,8 @@
 import React from 'react'
-import { store, expenseActions } from 'state/stores/expense'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props)
-    }
-
-    state = {
-        expenses: store.getState()
     }
 
     // increase = () => {

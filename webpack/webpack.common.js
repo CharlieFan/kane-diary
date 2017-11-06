@@ -24,7 +24,7 @@ const config = {
         ],
         alias: {
             'assets': path.resolve(__dirname, '../src/assets/'),  // use assets/** as images base
-            'state': path.resolve(__dirname, '../src/components/state/') // state base url
+            'state': path.resolve(__dirname, '../src/state/') // state base url
         }
     },
     module: {
