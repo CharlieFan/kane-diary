@@ -8,9 +8,9 @@ import 'normalize.css'
 import 'style/base.scss'
 
 const main = (
-    // <Provider>
+    <Provider store={store}>
         <Router />
-    // </Provider>
+    </Provider>
 )
 
 ReactDOM.render(

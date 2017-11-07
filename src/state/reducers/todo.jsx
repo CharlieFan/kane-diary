@@ -1,7 +1,14 @@
 /**
  * TODO Reducer
  */
-const defaultTodo = []
+const defaultTodo = [
+    {
+        id: 1,
+        content: 'First thing to do',
+        createAt: 1510092325,
+        isFinished: false
+    }
+]
 const todoReducer = (state = defaultTodo, action) => {
     switch (action.type) {
         case 'ADD_TODO':
