@@ -1,15 +1,15 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const VENDOR_LIBS = [
-    'babel-polyfill', 'react', 'react-dom', 'react-router-dom', 'redux'
+    'react', 'react-dom', 'react-router-dom', 'redux'
 ]
 
 const config = {
     entry: {
         vendor: VENDOR_LIBS,
-        app: path.resolve(__dirname, '../src/main/index.jsx')
+        app: path.resolve(__dirname, '../src/main/index.tsx')
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -17,7 +17,7 @@ const config = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.json'],
         modules: [
             path.resolve(__dirname, '../src'), // module use src as a url base
             'node_modules'
@@ -30,33 +30,9 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
-                use: 'babel-loader',
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'resolve-url-loader'
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ]
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,

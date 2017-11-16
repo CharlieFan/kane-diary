@@ -8,7 +8,18 @@
 //         isFinished: false
 //     }
 // ]
-const todoReducer = (state = [], action) => {
+const todoReducer = (state: {
+    content: string
+    createAt: number
+    isFinished: boolean
+}[] = [], action: {
+    type: string
+    todo: {
+        content: string
+        createAt: number
+        isFinished: boolean 
+    }
+}) => {
     switch (action.type) {
         case 'ADD_TODO':
             return [...state, action.todo]
