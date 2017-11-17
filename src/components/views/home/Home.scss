@@ -1,9 +1,8 @@
-@import "base";
+@import "base/base";
 
 .view-home {
-    p {
-        font-size: 1.6rem;
-        color: $color-primary;
+    h1 {
+        text-align: center;
     }
 
     button {
