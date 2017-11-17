@@ -31,12 +31,14 @@ class Dashboard extends React.Component {
         super(props)
     }
 
-    newTodoItem = ''
+    state = {
+        newTodoItem: ''
+    }
 
     submit() {
-        if (!this.newTodoItem) return false
-        this.props.addNew(this.newTodoItem)
-        this.newTodoItem = ''
+        if (!this.state.newTodoItem) return false
+        this.props.addNew(this.state.newTodoItem)
+        this.state.newTodoItem = ''
     }
 
     render() {
@@ -44,8 +46,11 @@ class Dashboard extends React.Component {
             <div>
                 <h1>Dashboard</h1>
                 <input placeholder="what need to do?"
+                    value={this.state.newTodoItem}
                     onInput={(e) => {
-                        this.newTodoItem = e.target.value
+                        this.setState({
+                            newTodoItem: e.target.value
+                        })
                     }}
                     type="text"/>
                 <button onClick={() => {
