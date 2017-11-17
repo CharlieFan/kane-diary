@@ -5,9 +5,22 @@ const common = require('./webpack.common')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const VENDOR_LIBS = [
+    'react', 'react-dom', 'react-router-dom', 'redux'
+]
+
 module.exports = merge(common, {
+    entry: {
+        vendor: VENDOR_LIBS,
+        app: path.resolve(__dirname, '../src/main/index.tsx')
+    },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({

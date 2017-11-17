@@ -3,7 +3,16 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 
+const VENDOR_LIBS = [
+    'react', 'react-dom', 'react-router-dom', 'redux'
+]
+
 module.exports = merge(common, {
+    entry: {
+        hot: 'react-hot-loader/patch',
+        vendor: VENDOR_LIBS,
+        app: path.resolve(__dirname, '../src/main/index.tsx')
+    },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
@@ -13,6 +22,15 @@ module.exports = merge(common, {
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: [
+                    'react-hot-loader/webpack',
+                    'ts-loader'
+                ],
+                include: path.resolve(__dirname, '../src'),
+                exclude: /node_modules/
+            },
             {
                 test: /\.css$/,
                 use: [

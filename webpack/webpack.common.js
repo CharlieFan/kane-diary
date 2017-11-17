@@ -2,15 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const VENDOR_LIBS = [
-    'react', 'react-dom', 'react-router-dom', 'redux'
-]
-
 const config = {
-    entry: {
-        vendor: VENDOR_LIBS,
-        app: path.resolve(__dirname, '../src/main/index.tsx')
-    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].[hash].js',
@@ -29,11 +21,6 @@ const config = {
     },
     module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,
                 use: [
