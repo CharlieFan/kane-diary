@@ -4,9 +4,9 @@
 
 type ActionType = 'ADD_TODO' | 'EDIT_TODO' | 'REMOVE_TODO'
 
-const todoReducer = (state: Types.Todo.base[] = [], action: {
+const todoReducer = (state: Types.Todo.Base[] = [], action: {
     type: ActionType
-    todo: Types.Todo.base
+    todo: Types.Todo.Base
 }) => {
     switch (action.type) {
         case 'ADD_TODO':
