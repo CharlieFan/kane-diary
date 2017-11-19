@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as styles from './Dashboard.scss'
 
 // Components:
-import TodoList from './todoList/TodoList'
+import TodoList from './TodoList'
 
 // Redux:
 import { connect } from 'react-redux'
@@ -42,7 +42,7 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
 
     render() {
         return (
-            <div>
+            <div className={styles['view-dashboard']}>
                 <h1>Dashboard</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault()
@@ -56,7 +56,9 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
                     <button type="submit">Add</button>
                 </form>
 
-                <TodoList todoList={this.props.todoList} />
+                <TodoList
+                    className={styles['todo-list']}
+                    todoList={this.props.todoList} />
             </div>
         )
     }

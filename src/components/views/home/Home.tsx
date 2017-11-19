@@ -7,6 +7,7 @@ export default class Home extends React.Component<{}, {}> {
         return (
             <div className={styles['view-home']}>
                 <h1>Home</h1>
+                <img src={require('assets/asuka.png')} alt="asuka"/>
                 <nav>
                     <ul>
                         <li>
