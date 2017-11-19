@@ -49,9 +49,12 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
                     this.handleSubmit()
                 }}>
                     <label>
-                        <input type="text" value={this.state.newTodo} onChange={(e) => {
-                            this.handleChange(e.target.value)
-                        }} />
+                        <input type="text"
+                            maxLength={24}
+                            value={this.state.newTodo}
+                            onChange={(e) => {
+                                this.handleChange(e.target.value)
+                            }} />
                     </label>
                     <button type="submit">Add</button>
                 </form>
@@ -64,13 +67,10 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
     }
 }
 
-const mapStateToProps = (state: {
-    todoList: Types.Todo.Base[]
-    visibilityFilter: string
-}) => {
+const mapStateToProps = (state: Types.Store) => {
     return {
-        todoList: state.todoList,
-        visibilityFilter: state.visibilityFilter
+        todoList: state.todo.todoList,
+        visibilityFilter: state.todo.visibilityFilter
     }
 }
 
@@ -83,6 +83,5 @@ const mapDispatchToProps = (dispatch: Dispatch<Types.Todo.ItodoStore>) => {
 }
 
 const DashboardComponent = connect(
-    mapStateToProps,
-    mapDispatchToProps)(Dashboard)
+    mapStateToProps, mapDispatchToProps)(Dashboard)
 export default DashboardComponent

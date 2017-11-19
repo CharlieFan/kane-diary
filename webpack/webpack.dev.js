@@ -7,12 +7,14 @@ const VENDOR_LIBS = [
     'react', 'react-dom', 'react-router-dom', 'redux'
 ]
 
+const entry = {
+    hot: 'react-hot-loader/patch',
+    vendor: VENDOR_LIBS,
+    app: path.resolve(__dirname, '../src/main/index.tsx')
+}
+
 module.exports = merge(common, {
-    entry: {
-        hot: 'react-hot-loader/patch',
-        vendor: VENDOR_LIBS,
-        app: path.resolve(__dirname, '../src/main/index.tsx')
-    },
+    entry: [entry.hot, ...entry.vendor, entry.app],
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
