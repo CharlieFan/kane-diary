@@ -1,0 +1,26 @@
+@import "base/base";
+
+.todo-list {
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid black;
+
+    li {
+        display: flex;
+        height: 30px;
+        word-break: break-all;
+
+        a {
+            display: inline-block;
+            flex: 4;
+        }
+
+        span {
+            flex: 1;
+        }
+
+        button {
+            float: right;
+        }
+    }
+}

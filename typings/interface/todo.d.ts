@@ -4,9 +4,10 @@
 
 export namespace Todo {
     interface Base {
+        id?: number
         content: string
-        createAt: number
-        isFinished: boolean
+        createAt?: number
+        isFinished?: boolean
     }
 
     interface ItodoStore {

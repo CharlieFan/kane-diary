@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as styles from './Dashboard.scss'
 
 // Components:
-import TodoList from './TodoList'
+import TodoList from './todoList/TodoList'
 
 // Redux:
 import { connect } from 'react-redux'
@@ -41,6 +41,12 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
     }
 
     render() {
+        let todoListVar = null
+        if (this.props.todoList.length > 0) {
+            todoListVar = <TodoList todoList={this.props.todoList} />
+        }
+
+
         return (
             <div className={styles['view-dashboard']}>
                 <h1>Dashboard</h1>
@@ -59,9 +65,7 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
                     <button type="submit">Add</button>
                 </form>
 
-                <TodoList
-                    className={styles['todo-list']}
-                    todoList={this.props.todoList} />
+                {todoListVar}
             </div>
         )
     }

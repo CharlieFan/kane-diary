@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as styles from './TodoList.scss'
 
 
 interface ItodoListProps {
@@ -9,7 +10,7 @@ interface ItodoListProps {
 export default class TodoList extends React.Component<ItodoListProps, {}> {
     render() {
         return (
-            <ul className={this.props.className || ''}>
+            <ul className={styles['todo-list']}>
                 {
                     this.props.todoList.map(item => {
                         return (
