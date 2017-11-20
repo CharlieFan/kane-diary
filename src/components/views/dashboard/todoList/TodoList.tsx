@@ -3,7 +3,6 @@ import * as styles from './TodoList.scss'
 
 console.log(styles)
 
-
 interface ItodoListProps {
     className?: string
     todoList: Types.Todo.Base[]
@@ -13,28 +12,6 @@ interface ItodoListProps {
 interface ItodoListStates {
     todoList: Types.Todo.Base[]
 }
-
-// class EditInput extends React.Component<{ value: string }, { content: string }> {
-//     state = {
-//         content: this.props.value
-//     }
-
-//     handleChange(value: string) {
-//         this.setState({
-//             content: value
-//         })
-//     }
-
-//     render() {
-//         return (
-//             <input type="text" maxLength={24}
-//                 value={this.state.content}
-//                 onChange={(e) => {
-//                     this.handleChange(e.target.value)
-//                 }} />
-//         )
-//     }
-// }
 
 export default class TodoList extends React.Component<ItodoListProps, ItodoListStates> {
     state = {
