@@ -5,13 +5,6 @@ import * as moment from 'moment'
 
 let initId = 0
 
-type FilterType = 'SHOW_COMPLETED' | 'SHOW_UNCOMPLETED' | 'SHOW_ALL'
-
-interface Filters {
-    type: string
-    filter: FilterType
-}
-
 export const addTodo = (content: string) => {
     let todo: Types.Todo.Base = {
         id: initId++,
@@ -33,17 +26,17 @@ export const editTodo = (id: number, content: string) => {
     }
 }
 
-export const toggleTodo = (id: number) => {
+export const toggleCompleted = (id: number) => {
     return {
-        type: 'TOGGLE_TODO',
+        type: 'TOGGLE_COMPLETED',
         id
     }
 }
 
 
-export const filter = (filterType: FilterType) => {
+export const filter = (filterType: Types.Todo.FilterType) => {
     return {
-    type: 'SET_VISIBILITY_FILTER',
+        type: 'SET_VISIBILITY_FILTER',
         filter: filterType
     }
 }

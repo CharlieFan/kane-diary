@@ -2,10 +2,8 @@
  * TODO List Reducer
  */
 
-type ActionType = 'ADD_TODO' | 'EDIT_TODO' | 'REMOVE_TODO' | 'TOGGLE_TODO'
-
 const todoReducer = (state: Types.Todo.Base[] = [], action: {
-    type: ActionType
+    type: Types.Todo.ActionType
     todo?: Types.Todo.Base
     id?: number
 }) => {
@@ -26,7 +24,7 @@ const todoReducer = (state: Types.Todo.Base[] = [], action: {
                     return todo
                 }
             })
-        case 'TOGGLE_TODO':
+        case 'TOGGLE_COMPLETED':
             return state.map((todo) => {
                 if (todo.id === action.id) {
                     return {

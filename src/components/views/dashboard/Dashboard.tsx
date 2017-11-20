@@ -7,12 +7,13 @@ import TodoList from './todoList/TodoList'
 // Redux:
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { addTodo } from 'store/modules/todo/action'
+import { addTodo, toggleCompleted } from 'store/modules/todo/action'
 
 interface TodoProps {
     todoList: Types.Todo.Base[]
     visibilityFilter: string
-    submitTodo(content: string): Types.Todo.ItodoAction
+    submitTodo(content: string): void
+    toggleCompleted(id: number): void
 }
 
 interface TodoStates {
@@ -43,7 +44,9 @@ class Dashboard extends React.Component<TodoProps, TodoStates> {
     render() {
         let todoListVar = null
         if (this.props.todoList.length > 0) {
-            todoListVar = <TodoList todoList={this.props.todoList} />
+            todoListVar = <TodoList
+                toggleCompleted={this.props.toggleCompleted}
+                todoList={this.props.todoList} />
         }
 
 
@@ -78,10 +81,13 @@ const mapStateToProps = (state: Types.Store) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Types.Todo.ItodoStore>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Types.Store>) => {
     return {
         submitTodo: (content: string) => {
             dispatch(addTodo(content))
+        },
+        toggleCompleted: (id: number) => {
+            dispatch(toggleCompleted(id))
         }
     }
 }
