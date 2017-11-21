@@ -5,7 +5,6 @@ import * as styles from './Dashboard.scss'
 import TodoList from './todoList/TodoList'
 
 // Redux:
-import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { addTodo, editTodo } from 'store/modules/todo/action'
 
@@ -21,7 +20,7 @@ interface ITodoStates {
     newTodo: string
 }
 
-class Dashboard extends React.Component<ITodoProps, ITodoStates> {
+export default class Dashboard extends React.Component<ITodoProps, ITodoStates> {
     state = {
         newTodo: ''
     }
@@ -74,25 +73,3 @@ class Dashboard extends React.Component<ITodoProps, ITodoStates> {
         )
     }
 }
-
-const mapStateToProps = (state: Types.Store) => {
-    return {
-        todoList: state.todo.todoList,
-        visibilityFilter: state.todo.visibilityFilter
-    }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<Types.Store>) => {
-    return {
-        submitTodo: (content: string) => {
-            dispatch(addTodo(content))
-        },
-        editTodo: (todo: Types.Todo.Base) => {
-            dispatch(editTodo(todo))
-        }
-    }
-}
-
-const DashboardComponent = connect(
-    mapStateToProps, mapDispatchToProps)(Dashboard)
-export default DashboardComponent
