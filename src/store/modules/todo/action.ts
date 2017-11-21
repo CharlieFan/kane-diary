@@ -18,21 +18,12 @@ export const addTodo = (content: string) => {
     }
 }
 
-export const editTodo = (id: number, content: string) => {
-    let todo: Types.Todo.Base = {id, content}
+export const editTodo = (newTodo: Types.Todo.Base) => {
     return {
         type: 'EDIT_TODO',
-        todo
+        todo: newTodo
     }
 }
-
-export const toggleCompleted = (id: number) => {
-    return {
-        type: 'TOGGLE_COMPLETED',
-        id
-    }
-}
-
 
 export const filter = (filterType: Types.Todo.FilterType) => {
     return {

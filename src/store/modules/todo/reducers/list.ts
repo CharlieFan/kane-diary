@@ -7,6 +7,7 @@ const todoReducer = (state: Types.Todo.Base[] = [], action: {
     todo?: Types.Todo.Base
     id?: number
 }) => {
+    // console.log(action.type)
     switch (action.type) {
         case 'ADD_TODO':
             return [
@@ -18,18 +19,7 @@ const todoReducer = (state: Types.Todo.Base[] = [], action: {
                 if (todo.id === action.todo.id) {
                     return {
                         ...todo,
-                        content: action.todo.content
-                    }
-                } else {
-                    return todo
-                }
-            })
-        case 'TOGGLE_COMPLETED':
-            return state.map((todo) => {
-                if (todo.id === action.id) {
-                    return {
-                        ...todo,
-                        isFinished: !todo.isFinished
+                        ...action.todo
                     }
                 } else {
                     return todo
