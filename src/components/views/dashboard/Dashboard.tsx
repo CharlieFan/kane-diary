@@ -4,16 +4,9 @@ import * as styles from './Dashboard.scss'
 // Components:
 import TodoList from './todoList/TodoList'
 
-// Redux:
-import { Dispatch } from 'redux'
-import { addTodo, editTodo } from 'store/modules/todo/action'
-
 interface ITodoProps {
     todoList: Types.Todo.Base[]
-    visibilityFilter: string
-    submitTodo(content: string): void
-    toggleCompleted(id: number): void
-    editTodo(todo: Types.Todo.Base): void
+    addTodo(content: string): void
 }
 
 interface ITodoStates {
@@ -34,7 +27,7 @@ export default class Dashboard extends React.Component<ITodoProps, ITodoStates> 
 
     handleSubmit() {
         if (!this.state.newTodo) return
-        this.props.submitTodo(this.state.newTodo)
+        this.props.addTodo(this.state.newTodo)
         this.setState({
             newTodo: ''
         })
@@ -44,9 +37,7 @@ export default class Dashboard extends React.Component<ITodoProps, ITodoStates> 
     render() {
         let todoListVar = null
         if (this.props.todoList.length > 0) {
-            todoListVar = <TodoList
-                editTodo={this.props.editTodo}
-                todoList={this.props.todoList} />
+            todoListVar = <TodoList/>
         }
 
 

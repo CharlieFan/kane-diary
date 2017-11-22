@@ -1,14 +1,18 @@
 import * as React from 'react'
 import * as styles from './TodoList.scss'
 
+// Redux:
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+import { editTodo } from 'store/modules/todo/action'
+
 // Components:
 import TodoItem from './TodoItem'
-
-// console.log(styles)
 
 interface ItodoListProps {
     className?: string
     todoList: Types.Todo.Base[]
+    visibilityFilter: string
     editTodo(todo: Types.Todo.Base): void
 }
 
@@ -16,7 +20,7 @@ interface ItodoListStates {
     todoList: Types.Todo.Base[]
 }
 
-export default class TodoList extends React.Component<ItodoListProps, ItodoListStates> {
+class TodoList extends React.Component<ItodoListProps, ItodoListStates> {
     state = {
         todoList: this.props.todoList.map(todo => {
             return {
@@ -58,3 +62,21 @@ export default class TodoList extends React.Component<ItodoListProps, ItodoListS
         )
     }
 }
+
+const mapStateToProps = (state: Types.Store) => {
+    return {
+        todoList: state.todo.todoList,
+        visibilityFilter: state.todo.visibilityFilter
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<Types.Store>) => {
+    return {
+        editTodo: (todo: Types.Todo.Base) => {
+            dispatch(editTodo(todo))
+        }
+    }
+}
+
+const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default TodoListContainer

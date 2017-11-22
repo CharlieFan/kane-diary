@@ -1,5 +1,11 @@
 import * as React from 'react'
 import * as styles from './TodoList.scss'
+import * as moment from 'moment'
+
+// Redux:
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+import { editTodo } from 'store/modules/todo/action'
 
 interface ITodoItemProps {
     todo: Types.Todo.Base
@@ -88,7 +94,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, ITodoItemS
                     }
                 </span>
                 <span>
-                    {this.props.todo.createAt}
+                    { moment(`${this.props.todo.createAt}`, 'X').format('MMM-DD-YYYY') }
                 </span>
                 <span>
                     {
