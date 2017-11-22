@@ -14,7 +14,6 @@ export default class Home extends React.Component<{}, IHomeState> {
 
     async componentDidMount() {
         let res = await api.demo.getDemoData()
-        console.log(res)
         this.setState({
             title: res.title
         })
