@@ -10,6 +10,7 @@
     "build": "webpack --config ./webpack/webpack.prod.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "moment": "^2.19.2",
     "normalize.css": "^7.0.0",
     "react": "^16.1.1",
