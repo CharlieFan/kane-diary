@@ -39,6 +39,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.scss$/,
+                exclude: path.resolve(__dirname, '../src/style'),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
@@ -49,6 +50,30 @@ module.exports = merge(common, {
                                 importLoaders: 1,
                                 localIdentName: '[name]__[local]___[hash:base64:5]'
                             }
+                        },
+                        {
+                            loader: 'resolve-url-loader'
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true,
+                                includePaths: [
+                                    path.resolve(__dirname, '../src/style')
+                                ]
+                            }
+                        }
+                    ]
+                })
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, '../src/style'),
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader'
                         },
                         {
                             loader: 'resolve-url-loader'

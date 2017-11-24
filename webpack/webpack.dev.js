@@ -42,8 +42,8 @@ module.exports = merge(common, {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]' 
+                            module: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
                         }
                     },
                     'postcss-loader'
@@ -51,6 +51,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.scss$/,
+                exclude: path.resolve(__dirname, '../src/style'),
                 use: [
                     {
                         loader: 'style-loader'
@@ -59,9 +60,32 @@ module.exports = merge(common, {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            importLoaders: 1,
                             localIdentName: '[name]__[local]___[hash:base64:5]'
                         }
+                    },
+                    {
+                        loader: 'resolve-url-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            includePaths: [
+                                path.resolve(__dirname, '../src/style')
+                            ]
+                        }
+                    } 
+                ]
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, '../src/style'),
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
                     },
                     {
                         loader: 'resolve-url-loader'
