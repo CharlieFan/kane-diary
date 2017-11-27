@@ -1,2 +1,33 @@
 @import "./base/base";
 @import "./base/reset";
+
+.form-panel {
+    max-width: 500px;
+    margin: 0 auto;
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        margin: 30px auto;
+    }
+
+    form {
+        width: 100%;
+
+        input,
+        button {
+            width: 100%;
+            height: 36px;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
