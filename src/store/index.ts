@@ -1,20 +1,14 @@
+import { combineReducers } from 'redux'
 import { createStore } from 'redux'
 
-// Actions:
 
 // Reducers:
 import todoReducer from './modules/todo'
 
-// Stores:
-const stores = {
-    todoStore: createStore(todoReducer)
-}
+const reducers = combineReducers({
+    todo: todoReducer
+})
 
-const actions = {
+const stores = createStore(reducers)
 
-}
-
-export {
-    stores,
-    actions
-}
+export default stores

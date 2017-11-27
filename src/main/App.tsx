@@ -1,15 +1,13 @@
 import * as React from 'react'
 import Router from 'router/Router'
 import { Provider } from 'react-redux'
-import { stores } from 'store'
-
-console.log(stores)
-
+import store from 'store'
+// console.log(store)
 
 export class App extends React.Component<{}, {}> {
     render() {
         return (
-            <Provider store={stores.todoStore}>
+            <Provider store={store}>
                 <Router />
             </Provider>
         )

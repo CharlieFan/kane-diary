@@ -3,8 +3,7 @@ import * as ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { App } from './App'
 
-import 'normalize.css'
-import 'style/base.scss'
+import 'style/app.scss'
 
 const appRoot = document.getElementById('app')
 

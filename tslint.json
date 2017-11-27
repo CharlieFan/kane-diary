@@ -18,10 +18,7 @@
             "check-open-brace",
             "check-whitespace"
         ],
-        "quotemark": [
-            true,
-            "single"
-        ],
+        "quotemark": [true, "single", "jsx-double"],
         "semicolon": [
             true,
             "never"
@@ -63,10 +60,7 @@
             "check-open-brace",
             "check-whitespace"
         ],
-        "quotemark": [
-            true,
-            "single"
-        ],
+        "quotemark": [true, "single", "jsx-double"],
         "semicolon": [
             true,
             "never"
@@ -96,6 +90,7 @@
             "check-operator",
             "check-separator",
             "check-type"
-        ]
+        ],
+        "interface-name": [true, "always-prefix"]
     }
 }

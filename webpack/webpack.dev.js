@@ -7,12 +7,14 @@ const VENDOR_LIBS = [
     'react', 'react-dom', 'react-router-dom', 'redux'
 ]
 
+const entry = {
+    hot: 'react-hot-loader/patch',
+    vendor: VENDOR_LIBS,
+    app: path.resolve(__dirname, '../src/main/index.tsx')
+}
+
 module.exports = merge(common, {
-    entry: {
-        hot: 'react-hot-loader/patch',
-        vendor: VENDOR_LIBS,
-        app: path.resolve(__dirname, '../src/main/index.tsx')
-    },
+    entry: [entry.hot, ...entry.vendor, entry.app],
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
@@ -40,8 +42,8 @@ module.exports = merge(common, {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]' 
+                            module: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
                         }
                     },
                     'postcss-loader'
@@ -49,6 +51,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.scss$/,
+                exclude: path.resolve(__dirname, '../src/style'),
                 use: [
                     {
                         loader: 'style-loader'
@@ -57,9 +60,32 @@ module.exports = merge(common, {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            importLoaders: 1,
                             localIdentName: '[name]__[local]___[hash:base64:5]'
                         }
+                    },
+                    {
+                        loader: 'resolve-url-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            includePaths: [
+                                path.resolve(__dirname, '../src/style')
+                            ]
+                        }
+                    } 
+                ]
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, '../src/style'),
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
                     },
                     {
                         loader: 'resolve-url-loader'
