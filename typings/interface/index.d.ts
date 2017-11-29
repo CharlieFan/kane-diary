@@ -13,3 +13,5 @@ export interface Store {
 export interface IPlainObject {
     [key: string]: any
 }
+
+export { RouteComponentProps } from 'react-router'

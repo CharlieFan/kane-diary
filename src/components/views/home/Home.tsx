@@ -3,15 +3,26 @@ import * as styles from './Home.scss'
 import { Link } from 'react-router-dom'
 import api from 'api'
 
-import { Button, DropdownButton, MenuItem } from 'react-bootstrap'
+import {
+    Button,
+    DropdownButton,
+    MenuItem,
+    Nav,
+    NavItem
+} from 'react-bootstrap'
+
+interface IHomeProps extends Types.RouteComponentProps<IHomeProps> {
+}
 
 interface IHomeState {
     title?: string
+    routerKey?: string
 }
 
-export default class Home extends React.Component<{}, IHomeState> {
+export default class Home extends React.Component<IHomeProps, IHomeState> {
     state = {
-        title: 'wait for loading'
+        title: 'wait for loading',
+        routerKey: '/'
     }
 
     async componentDidMount() {
@@ -24,15 +35,33 @@ export default class Home extends React.Component<{}, IHomeState> {
     render() {
         return (
             <div className={styles['view-home']}>
-                <h1>Home</h1>
-                <img src={require('assets/asuka.png')} alt="asuka"/>
-                <nav>
+                <Nav bsStyle="pills"
+                    activeKey={this.state.routerKey}
+                    onSelect={(eventKey) => {
+                        let routerKey = eventKey.toString()
+                        this.setState({
+                            routerKey
+                        })
+
+                        this.props.history.push(routerKey)
+                    }}>
+                    <NavItem eventKey="/">
+                        Demo Home
+                    </NavItem>
+                    <NavItem eventKey="/dashboard">
+                        Dashboard
+                    </NavItem>
+                </Nav>
+                {/* <nav>
                     <ul>
                         <li>
                             <Link to="/dashboard">Dashboard</Link>
                         </li>
                     </ul>
-                </nav>
+                </nav> */}
+                <h1>Home</h1>
+                <h2>UI Demos</h2>
+                {/* <img src={require('assets/asuka.png')} alt="asuka"/> */}
                 <p>
                     Hello welcome to Kane Diary!
                     SOME RANDOM CONTENT FOR TESTING AJAX: <br/>
