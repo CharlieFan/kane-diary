@@ -1,0 +1,28 @@
+@import "base/base";
+
+.view-demo {
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+.blue-block {
+    width: 100%;
+    height: 36px;
+    background: #2aaeff;
+}
+
+.show-case {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: #dcdcdc;
+}
